@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ds/beauty": ["packages/beauty/src/index.ts"],
+      "@ds/beauty-react": ["packages/beauty-react/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

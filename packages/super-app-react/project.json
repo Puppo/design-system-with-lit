@@ -1,0 +1,81 @@
+{
+  "name": "super-app-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/super-app-react/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/packages/super-app-react"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "super-app-react:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "super-app-react:build:development",
+          "hmr": true,
+          "port": 3000
+        },
+        "production": {
+          "buildTarget": "super-app-react:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "super-app-react:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "super-app-react:build:development"
+        },
+        "production": {
+          "buildTarget": "super-app-react:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": [
+        "coverage/packages/super-app-react"
+      ],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/packages/super-app-react"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "packages/super-app-react/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
